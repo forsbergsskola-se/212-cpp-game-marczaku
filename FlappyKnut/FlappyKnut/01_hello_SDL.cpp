@@ -6,7 +6,7 @@ and may not be redistributed without written permission.*/
 #include <stdio.h>
 #include "Window.h"
 #include "Image.h"
-#include "SDLImageLoader.h"
+#include "SDL_ImageImageLoader.h"
 #include <map>
 #include <memory>
 
@@ -26,12 +26,12 @@ std::map<SDL_KeyCode, const char*> surfaceMap = {
 	{SDL_KeyCode::SDLK_RIGHT, "img/right.bmp"},
 };
 
-const char* fallbackSurface{ "img/press.bmp" };
+const char* fallbackSurface{ "img/pikachu.png" };
 
 int main(int argc, char* args[])
 {
 	// We decide for now to use the SDL Image Loader (which only supports BMP):
-	IImageLoader* imageLoader = new SDLImageLoader{};
+	IImageLoader* imageLoader = new SDL_ImageImageLoader{};
 	// We pass that ImageLoader on to the Window, so the Window can use it
 	// to load the image
 	Window window{ SCREEN_WIDTH, SCREEN_HEIGHT, imageLoader };
@@ -99,10 +99,3 @@ int main(int argc, char* args[])
 
 	return 0;
 }
-
-
-
-
-
-
-

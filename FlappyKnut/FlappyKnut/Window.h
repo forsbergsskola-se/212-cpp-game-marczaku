@@ -20,6 +20,8 @@ public:
 	~Window();
 	bool wasSuccessful() { return success; }
 	void render(Image* image);
+	void clear();
+	void present();
 	std::unique_ptr<Image> loadImage(const char* path);
 };
 

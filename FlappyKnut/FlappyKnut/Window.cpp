@@ -45,10 +45,18 @@ void Window::render(Image* image) {
 	};
 	//Apply image
 	SDL_BlitScaled(image->getResource(), nullptr, screenSurface, &targetRectangle);
-	//Update the surface
-	SDL_UpdateWindowSurface(window);
 }
 
 std::unique_ptr<Image> Window::loadImage(const char* path) {
 	return imageLoader->loadImage(path, screenSurface->format);
+}
+
+void Window::clear() {
+	static Uint32 clearColor = SDL_MapRGB(screenSurface->format, 0, 0, 0);
+	SDL_FillRect(screenSurface, nullptr, clearColor);
+}
+
+void Window::present() {
+	//Update the surface
+	SDL_UpdateWindowSurface(window);
 }

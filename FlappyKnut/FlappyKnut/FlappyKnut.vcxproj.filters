@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Rendering">
       <UniqueIdentifier>{e53c659e-f71f-4230-a8f2-d6108ae58232}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Images">
+      <UniqueIdentifier>{cfabe45a-e05a-47a2-8876-a5024abec747}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_hello_SDL.cpp">
@@ -48,13 +51,13 @@
       <Filter>Header Files\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="IImageLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLImageLoader.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Images</Filter>
     </ClInclude>
     <ClInclude Include="SDL_ImageImageLoader.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Images</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLImageLoader.h">
+      <Filter>Header Files\Images</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

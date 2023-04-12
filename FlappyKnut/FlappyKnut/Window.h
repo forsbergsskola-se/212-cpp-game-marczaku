@@ -1,11 +1,13 @@
 #pragma once
 #include "Image.h"
+#include <memory>
+
 class Window
 {
 	//The window we'll be rendering to
-	SDL_Window* gWindow{};
+	SDL_Window* window{};
 	//The surface contained by the window
-	SDL_Surface* gScreenSurface{};
+	SDL_Surface* screenSurface{};
 	//Whether Window Startup was successful
 	bool success;
 
@@ -13,6 +15,7 @@ public:
 	Window(int width, int height);
 	~Window();
 	bool wasSuccessful() { return success; }
-	void render(Image& image);
+	void render(Image* image);
+	std::unique_ptr<Image> loadImage(const char* path);
 };
 

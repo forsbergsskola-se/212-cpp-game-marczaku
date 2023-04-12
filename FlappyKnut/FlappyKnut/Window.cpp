@@ -1,8 +1,10 @@
 #include "Window.h"
 #include <cstdio>
 #include <SDL.h>
+#include "IImageLoader.h"
 
-Window::Window(int width, int height) : success{} {
+Window::Window(int width, int height, IImageLoader* imageLoader)
+	: success{}, imageLoader{ imageLoader } {
 
 	//Initialize SDL
 	if (SDL_Init(SDL_INIT_VIDEO))
@@ -35,12 +37,18 @@ Window::~Window() {
 }
 
 void Window::render(Image* image) {
+	SDL_Rect targetRectangle{ 
+		image->x,
+		image->y,
+		image->width,
+		image->height
+	};
 	//Apply image
-	SDL_BlitSurface(image->getResource(), nullptr, screenSurface, nullptr);
+	SDL_BlitScaled(image->getResource(), nullptr, screenSurface, &targetRectangle);
 	//Update the surface
 	SDL_UpdateWindowSurface(window);
 }
 
 std::unique_ptr<Image> Window::loadImage(const char* path) {
-	return std::make_unique<Image>(path, screenSurface->format);
+	return imageLoader->loadImage(path, screenSurface->format);
 }

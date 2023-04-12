@@ -2,6 +2,8 @@
 #include "Image.h"
 #include <memory>
 
+extern class IImageLoader;
+
 class Window
 {
 	//The window we'll be rendering to
@@ -10,9 +12,11 @@ class Window
 	SDL_Surface* screenSurface{};
 	//Whether Window Startup was successful
 	bool success;
+	// dependency to the ImageLoader
+	IImageLoader* imageLoader;
 
 public:
-	Window(int width, int height);
+	Window(int width, int height, IImageLoader* imageLoader);
 	~Window();
 	bool wasSuccessful() { return success; }
 	void render(Image* image);

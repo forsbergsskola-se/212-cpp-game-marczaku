@@ -6,6 +6,7 @@ and may not be redistributed without written permission.*/
 #include <stdio.h>
 #include "Window.h"
 #include "Image.h"
+#include "SDLImageLoader.h"
 #include <map>
 #include <memory>
 
@@ -29,7 +30,11 @@ const char* fallbackSurface{ "img/press.bmp" };
 
 int main(int argc, char* args[])
 {
-	Window window{ SCREEN_WIDTH, SCREEN_HEIGHT };
+	// We decide for now to use the SDL Image Loader (which only supports BMP):
+	IImageLoader* imageLoader = new SDLImageLoader{};
+	// We pass that ImageLoader on to the Window, so the Window can use it
+	// to load the image
+	Window window{ SCREEN_WIDTH, SCREEN_HEIGHT, imageLoader };
 	//Start up SDL and create window
 	if (!window.wasSuccessful())
 	{
@@ -50,9 +55,20 @@ int main(int argc, char* args[])
 
 	SDL_Event e; bool quit = false;
 
+	bool goingRight = true;
+
 	// while the user doesn't want to quit
 	while (quit == false)
 	{
+		if (goingRight)
+			image->x++;
+		else
+			image->x--;
+
+		if (image->x > 500 || image->x < 1) {
+			goingRight = !goingRight;
+		}
+
 		// loop through all pending events from Windows (OS)
 		while (SDL_PollEvent(&e))
 		{

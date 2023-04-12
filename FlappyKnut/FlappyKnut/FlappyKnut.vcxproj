@@ -28,11 +28,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_hello_SDL.cpp" />
+    <ClCompile Include="IImageLoader.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="SDLImageLoader.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IImageLoader.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="SDLImageLoader.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

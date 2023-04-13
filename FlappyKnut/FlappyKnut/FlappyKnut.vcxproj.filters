@@ -22,6 +22,9 @@
     <Filter Include="Header Files\Images">
       <UniqueIdentifier>{cfabe45a-e05a-47a2-8876-a5024abec747}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Images">
+      <UniqueIdentifier>{a335a3f7-cfdf-4a34-a44b-3dbaf434fd56}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_hello_SDL.cpp">
@@ -33,15 +36,6 @@
     <ClCompile Include="Image.cpp">
       <Filter>Source Files\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="IImageLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLImageLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDL_ImageImageLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -51,8 +45,14 @@
     <ClCompile Include="Charmander.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PatrollingEnemy.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SDL_ImageImageLoader.cpp">
+      <Filter>Source Files\Images</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLImageLoader.cpp">
+      <Filter>Source Files\Images</Filter>
+    </ClCompile>
+    <ClCompile Include="IImageLoader.cpp">
+      <Filter>Source Files\Images</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,9 +78,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Charmander.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PatrollingEnemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

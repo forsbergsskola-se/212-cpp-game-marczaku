@@ -3,10 +3,10 @@
 #include <memory>
 
 extern class Image;
-extern struct SDL_PixelFormat;
+extern struct SDL_Renderer;
 
 class IImageLoader
 {
 public:
-	virtual std::unique_ptr<Image> loadImage(const char* path, const SDL_PixelFormat* pixelFormat) = 0;
+	virtual std::unique_ptr<Image> loadImage(const char* path, SDL_Renderer* renderer) = 0;
 };

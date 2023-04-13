@@ -2,9 +2,9 @@
 #include <SDL_image.h>
 #include "Image.h"
 
-std::unique_ptr<Image> SDL_ImageImageLoader::loadImage(const char* path, const SDL_PixelFormat* pixelFormat) {
+std::unique_ptr<Image> SDL_ImageImageLoader::loadImage(const char* path, SDL_Renderer* renderer) {
     //The final optimized image
-    SDL_Surface* optimizedSurface = NULL;
+    SDL_Texture* newTexture = NULL;
 
     //Load image at specified path
     SDL_Surface* loadedSurface = IMG_Load(path);
@@ -15,17 +15,17 @@ std::unique_ptr<Image> SDL_ImageImageLoader::loadImage(const char* path, const S
     else
     {
         //Convert surface to screen format
-        optimizedSurface = SDL_ConvertSurface(loadedSurface, pixelFormat, 0);
-        if (optimizedSurface == NULL)
+        newTexture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
+        if (newTexture == NULL)
         {
-            printf("Unable to optimize image %s! SDL Error: %s\n", path, SDL_GetError());
+            printf("Unable to create texture from %s! SDL Error: %s\n", path, SDL_GetError());
         }
 
         //Get rid of old loaded surface
         SDL_FreeSurface(loadedSurface);
     }
 
-    return std::make_unique<Image>(optimizedSurface);
+    return std::make_unique<Image>(newTexture);
 }
 
 SDL_ImageImageLoader::SDL_ImageImageLoader() {

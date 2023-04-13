@@ -2,9 +2,9 @@
 #include <SDL.h>
 #include <cstdio>
 
-Image::Image(SDL_Surface* surface) : 
-	imageSurface{surface},
-	success{surface != nullptr},
+Image::Image(SDL_Texture* texture) :
+	texture{ texture },
+	success{ texture != nullptr},
 	x{},
 	y{},
 	width{ 100 },
@@ -12,6 +12,6 @@ Image::Image(SDL_Surface* surface) :
 
 Image::~Image() {
 	//Dealloacate surface
-	SDL_FreeSurface(imageSurface);
-	imageSurface = nullptr;
+	SDL_DestroyTexture(texture);
+	texture = nullptr;
 }

@@ -10,6 +10,7 @@ class Window
 	SDL_Window* window{};
 	//The surface contained by the window
 	SDL_Surface* screenSurface{};
+	SDL_Renderer* renderer;
 	//Whether Window Startup was successful
 	bool success;
 	// dependency to the ImageLoader

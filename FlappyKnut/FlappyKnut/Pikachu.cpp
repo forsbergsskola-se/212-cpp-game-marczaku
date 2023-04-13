@@ -3,16 +3,17 @@
 
 void Pikachu::update() {
 	if (patrollingRight) {
-		i++;
-		if (i == 100) {
+		xOffset++;
+		image->x++;
+		if (xOffset == 100) {
 			patrollingRight = false;
 		}
 	}
 	else {
-		i--;
-		if (i == 0) {
+		xOffset--;
+		image->x--;
+		if (xOffset == 0) {
 			patrollingRight = true;
 		}
 	}
-	image->x = i;
 }

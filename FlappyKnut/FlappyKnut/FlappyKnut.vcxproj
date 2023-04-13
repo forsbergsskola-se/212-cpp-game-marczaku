@@ -32,6 +32,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="IImageLoader.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="PatrollingEnemy.cpp" />
     <ClCompile Include="Pikachu.cpp" />
     <ClCompile Include="SDLImageLoader.cpp" />
     <ClCompile Include="SDL_ImageImageLoader.cpp" />
@@ -42,6 +43,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="IImageLoader.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="PatrollingEnemy.h" />
     <ClInclude Include="Pikachu.h" />
     <ClInclude Include="SDLImageLoader.h" />
     <ClInclude Include="SDL_ImageImageLoader.h" />

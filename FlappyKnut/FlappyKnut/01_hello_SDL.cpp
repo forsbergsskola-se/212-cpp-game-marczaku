@@ -53,8 +53,9 @@ int main(int argc, char* args[])
 	std::vector<GameObject*> gameObjects{};
 
 	gameObjects.push_back(new Pikachu{&window});
-	gameObjects.push_back(new Charmander{ &window, 200 });
-	gameObjects.push_back(new Charmander{ &window, 400 });
+	gameObjects.push_back(new Pikachu{ &window, 100, 100 });
+	gameObjects.push_back(new Charmander{ &window, 200, 0, 0, 200 });
+	gameObjects.push_back(new Charmander{ &window, 400, 300, -100, 100 });
 
 	SDL_Event e; bool quit = false;
 

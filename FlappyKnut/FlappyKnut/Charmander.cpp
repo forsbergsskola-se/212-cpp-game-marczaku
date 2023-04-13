@@ -2,16 +2,17 @@
 
 void Charmander::update() {
 	if (patrollingDown) {
-		i++;
-		if (i == 200) {
+		yOffset++;
+		image->y++;
+		if (yOffset == maxOffset) {
 			patrollingDown = false;
 		}
 	}
 	else {
-		i--;
-		if (i == 0) {
+		yOffset--;
+		image->y--;
+		if (yOffset == minOffset) {
 			patrollingDown = true;
 		}
 	}
-	image->y = i;
 }

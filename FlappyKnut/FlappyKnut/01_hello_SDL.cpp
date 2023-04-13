@@ -9,6 +9,10 @@ and may not be redistributed without written permission.*/
 #include "SDL_ImageImageLoader.h"
 #include <map>
 #include <memory>
+#include <vector>
+#include "GameObject.h"
+#include "Pikachu.h"
+#include "Charmander.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -46,53 +50,40 @@ int main(int argc, char* args[])
 	}
 
 
-	//Load media
-	//auto image{ std::make_unique<Image>(fallbackSurface, window.getPixelFormat()) };
-	auto image{window.loadImage(pikachuImagePath)};
-	if (!image->wasSuccessful())
-	{
-		// TODO: Replace with Exceptions
-		printf("Failed to load media!\n");
-		return -1;
-	}
+	std::vector<GameObject*> gameObjects{};
 
-	auto pikachuBot{ window.loadImage(pikachuImagePath) };
-	if (!pikachuBot->wasSuccessful())
-	{
-		printf("Failed to load media!\n");
-		return -1;
-	}
-	pikachuBot->y = SCREEN_HEIGHT - 100;
-
+	gameObjects.push_back(new Pikachu{&window});
+	gameObjects.push_back(new Charmander{ &window, 200 });
+	gameObjects.push_back(new Charmander{ &window, 400 });
 
 	SDL_Event e; bool quit = false;
 
-	bool goingRight = true, botGoingRight = true;
 	unsigned int frameStartMs;
+
+	
+	bool patrollingDown{ true };
+	int j = 0;
+
 	// while the user doesn't want to quit
 	while (quit == false)
 	{
 		// start the timer
 		frameStartMs = SDL_GetTicks();
 
-		// update pikachu
-		if (goingRight)
-			image->x+=5;
-		else
-			image->x-=5;
-
-		if (image->x > 500 || image->x < 1) {
-			goingRight = !goingRight;
+		for (auto gameObject : gameObjects) {
+			gameObject->update();
 		}
 
-		if (botGoingRight)
-			pikachuBot->x+=0;
-		else
-			pikachuBot->x-=0;
+		//// pikachu patrol right
+		//for (int i = 0; i < 100; i++) {
+		//	image->x = i;
+		//}
 
-		if (pikachuBot->x > 500 || pikachuBot->x < 1) {
-			botGoingRight = !botGoingRight;
-		}
+		//// pikachu patrol left
+		//for (int i = 100; i > 0; i--) {
+		//	image->x = i;
+		//}
+
 
 		// loop through all pending events from Windows (OS)
 		while (SDL_PollEvent(&e))
@@ -108,26 +99,18 @@ int main(int argc, char* args[])
 						imgPath = result->second;
 					}
 
-					//image = std::make_unique<Image>(imgPath, window.getPixelFormat());
-					image = window.loadImage(imgPath);
-					if (!image->wasSuccessful())
-					{
-						printf("Failed to load media!\n");
-						return -1;
-					}
 				} break;
 			} 
 		}
+		
 		// when done with all pending events, update the rendered screen
-		// first clear
-		window.clear();
+		window.clear(); // first clear
+		
+		for (auto gameObject : gameObjects) {
+			gameObject->render(&window);
+		}
 
-		// then draw everything
-		window.render(image.get());
-		window.render(pikachuBot.get());
-
-		// then present it
-		window.present();
+		window.present(); // then present it
 
 		// see, how long we should wait so we get 30FPS
 		// Fixed Update

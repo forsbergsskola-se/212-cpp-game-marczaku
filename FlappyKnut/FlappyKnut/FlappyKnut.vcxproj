@@ -28,15 +28,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_hello_SDL.cpp" />
+    <ClCompile Include="Charmander.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="IImageLoader.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="Pikachu.cpp" />
     <ClCompile Include="SDLImageLoader.cpp" />
     <ClCompile Include="SDL_ImageImageLoader.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Charmander.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="IImageLoader.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="Pikachu.h" />
     <ClInclude Include="SDLImageLoader.h" />
     <ClInclude Include="SDL_ImageImageLoader.h" />
     <ClInclude Include="Window.h" />

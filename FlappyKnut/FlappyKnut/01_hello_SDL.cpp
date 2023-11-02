@@ -13,6 +13,7 @@ and may not be redistributed without written permission.*/
 #include "GameObject.h"
 #include "Pikachu.h"
 #include "Charmander.h"
+#include "Font.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -39,6 +40,13 @@ int main(int argc, char* args[])
 {
 	// We decide for now to use the SDL Image Loader (which only supports BMP):
 	IImageLoader* imageLoader = new SDL_ImageImageLoader{};
+
+	//Initialize SDL_ttf
+	if (TTF_Init() == -1)
+	{
+		printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
+	}
+
 	// We pass that ImageLoader on to the Window, so the Window can use it
 	// to load the image
 	Window window{ SCREEN_WIDTH, SCREEN_HEIGHT, imageLoader };
@@ -56,6 +64,10 @@ int main(int argc, char* args[])
 	gameObjects.push_back(new Pikachu{ &window, 100, 100 });
 	gameObjects.push_back(new Charmander{ &window, 200, 0, 0, 200 });
 	gameObjects.push_back(new Charmander{ &window, 400, 300, -100, 100 });
+	gameObjects.push_back(new Charmander{ &window, 400, 300, -100, 100 });
+
+	Font font{ "font/lazy.ttf", 100 };
+	auto text = font.createText("The lazy fox blah blah", window.renderer);
 
 	SDL_Event e; bool quit = false;
 
@@ -110,6 +122,7 @@ int main(int argc, char* args[])
 		for (auto gameObject : gameObjects) {
 			gameObject->render(&window);
 		}
+		window.render(text.get());
 
 		window.present(); // then present it
 

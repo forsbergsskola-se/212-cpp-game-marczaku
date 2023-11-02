@@ -10,13 +10,13 @@ class Window
 	SDL_Window* window{};
 	//The surface contained by the window
 	SDL_Surface* screenSurface{};
-	SDL_Renderer* renderer;
 	//Whether Window Startup was successful
 	bool success;
 	// dependency to the ImageLoader
 	IImageLoader* imageLoader;
 
 public:
+	SDL_Renderer* renderer;
 	Window(int width, int height, IImageLoader* imageLoader);
 	~Window();
 	bool wasSuccessful() { return success; }

@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Images">
       <UniqueIdentifier>{a335a3f7-cfdf-4a34-a44b-3dbaf434fd56}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DLLs">
+      <UniqueIdentifier>{f63b3bb7-0b74-4679-904f-7cee025f6699}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DLLs\x64">
+      <UniqueIdentifier>{5f93dea3-f7de-4f09-8c36-f3b08a41cf5e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_hello_SDL.cpp">
@@ -54,6 +60,9 @@
     <ClCompile Include="IImageLoader.cpp">
       <Filter>Source Files\Images</Filter>
     </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -80,8 +89,16 @@
     <ClInclude Include="Charmander.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="..\ext\SDL2-2.26.4\lib\x64\SDL2.dll" />
+    <CopyFileToFolders Include="..\ext\SDL2-2.26.4\lib\x64\SDL2.dll">
+      <Filter>DLLs\x64</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\ext\SDL2_ttf-2.20.2\lib\x64\SDL2_ttf.dll">
+      <Filter>DLLs\x64</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>
